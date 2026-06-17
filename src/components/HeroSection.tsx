@@ -96,6 +96,15 @@ const HeroSection = () => {
             <span>선착순 1만 명</span>
           </div>
         </div>
+
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2.5 mt-7 text-xs sm:text-sm text-white/45">
+          {["La Liga 공식 파트너", "AUSTRAC · VARA 라이선스", "7년 무사고 운영"].map((t) => (
+            <span key={t} className="flex items-center gap-1.5">
+              <svg className="w-4 h-4 text-[#A78BFA]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l9 4v6c0 5.25-3.6 9.74-9 11-5.4-1.26-9-5.75-9-11V5l9-4zm-1.2 14.2l6-6-1.4-1.4-4.6 4.6-2.2-2.2L7.2 11.6l3.6 3.6z" /></svg>
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
 
       <button
