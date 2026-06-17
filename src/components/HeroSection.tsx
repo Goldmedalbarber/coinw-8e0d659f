@@ -1,7 +1,28 @@
+import { useEffect, useRef, useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const HeroSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    v.addEventListener("canplay", tryPlay, { once: true });
+    return () => v.removeEventListener("canplay", tryPlay);
+  }, []);
+
+  const toggleMute = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    if (!v.muted) v.play().catch(() => {});
+    setMuted(v.muted);
+  };
 
   return (
     <section className="relative pt-10 pb-14 sm:pt-16 sm:pb-20 overflow-hidden gradient-mesh">
@@ -13,7 +34,7 @@ const HeroSection = () => {
         ref={ref}
         className={`relative max-w-5xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
           <div className="flex-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shimmer-badge text-[#5227FF] text-xs sm:text-sm font-semibold mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#5227FF]" />
@@ -57,14 +78,37 @@ const HeroSection = () => {
             </p>
           </div>
 
-          <div className="hidden lg:block flex-shrink-0 w-[340px]">
+          <div className="w-full lg:w-[480px] flex-shrink-0">
             <div className="relative">
-              <div className="absolute -inset-3 rounded-3xl bg-[#5227FF]/[0.04] blur-2xl" />
-              <img
-                src="https://cdn.yumltd.com/6e10bbfd04c9902329676c30ce02b617d769745d772dc4a7deb6770c214f2986.png?x-oss-process=image/format,webp"
-                alt="CoinW x Luka Modrić"
-                className="relative w-full rounded-2xl"
-              />
+              <div className="absolute -inset-3 rounded-3xl bg-[#5227FF]/[0.06] blur-2xl" />
+              <div className="relative aspect-video rounded-2xl overflow-hidden glow-purple bg-black">
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  src="/modric-coinw.mp4"
+                  poster="/modric-coinw-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                />
+                <button
+                  onClick={toggleMute}
+                  aria-label={muted ? "소리 켜기" : "소리 끄기"}
+                  className="absolute bottom-3 right-3 flex items-center justify-center w-10 h-10 rounded-full bg-black/45 backdrop-blur-sm text-white hover:bg-black/65 transition-colors"
+                >
+                  {muted ? (
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zM19 12c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4 9.91 6.09 12 8.18V4z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
