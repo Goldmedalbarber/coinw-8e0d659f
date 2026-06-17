@@ -2,8 +2,8 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const stats = [
   { value: "2,000만+", label: "글로벌 유저" },
-  { value: "$40억+", label: "일일거래량" },
-  { value: "200+", label: "국가/지역" },
+  { value: "$40억+", label: "일일 거래량" },
+  { value: "300+", label: "거래 종목" },
   { value: "7년+", label: "무사고 운영" },
 ];
 
@@ -11,22 +11,18 @@ const StatsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-10 sm:py-14">
       <div
         ref={ref}
-        className={`max-w-6xl mx-auto px-4 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
+        className={`max-w-4xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-4 gap-4">
           {stats.map((s, i) => (
-            <div
-              key={i}
-              className={`glass-card rounded-2xl p-6 sm:p-8 text-center border-t-[3px] border-t-[#5227FF] hover:glow-purple hover-card delay-${i + 1}`}
-              style={{ transitionDelay: `${i * 0.1}s` }}
-            >
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gradient-purple mb-2">
+            <div key={i} className="text-center">
+              <div className="text-xl sm:text-3xl font-extrabold text-gradient-purple">
                 {s.value}
               </div>
-              <div className="text-sm sm:text-base text-gray-500 font-medium">
+              <div className="text-xs sm:text-sm text-gray-400 mt-1">
                 {s.label}
               </div>
             </div>
