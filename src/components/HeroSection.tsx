@@ -4,7 +4,7 @@ const HeroSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
 
   return (
-    <section className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 overflow-hidden gradient-mesh">
+    <section className="relative pt-10 pb-14 sm:pt-16 sm:pb-20 overflow-hidden gradient-mesh">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#5227FF]/[0.05] blur-[100px]" />
       </div>
@@ -46,7 +46,13 @@ const HeroSection = () => {
                 🤖 Android 다운로드
               </a>
             </div>
-            <p className="text-xs text-gray-400 mt-3 text-center lg:text-left">
+            <div className="flex items-center justify-center lg:justify-start gap-2 mt-4 text-xs text-gray-500">
+              <span className="text-amber-400 tracking-tight">★★★★★</span>
+              <span className="font-semibold text-gray-700">4.8</span>
+              <span className="text-gray-300">·</span>
+              <span>2,000만+ 다운로드</span>
+            </div>
+            <p className="text-xs text-gray-400 mt-2 text-center lg:text-left">
               iOS는 TestFlight를 통해 설치됩니다
             </p>
           </div>
