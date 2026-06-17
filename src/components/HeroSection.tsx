@@ -36,19 +36,20 @@ const HeroSection = () => {
       >
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shimmer-badge text-[#5227FF] text-xs sm:text-sm font-semibold mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#5227FF]" />
-              La Liga 공식 파트너 · 2,000만+ 유저
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shimmer-badge text-[#5227FF] text-xs sm:text-sm font-bold mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F0364D] pulse-dot" />
+              🔥 전 세계 2,000만 명이 쓰는 글로벌 거래소
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black tracking-tight text-gray-900 leading-[1.15] mb-5">
-              글로벌이 검증한<br />
-              <span className="text-gradient-purple">크립토 거래소</span>
+            <h1 className="text-[32px] sm:text-5xl lg:text-[56px] font-black tracking-tight text-gray-900 leading-[1.12] mb-5">
+              루카 모드리치도<br />
+              쓰는 <span className="marker"><span className="text-gradient-purple">크립토 거래소</span></span>
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-500 leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-              300+ 종목, 업계 최저 수수료, 7년 무사고 운영.
-              지금 앱을 다운로드하고 시작하세요.
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
+              업계 <span className="marker-amber font-semibold text-gray-800">최저 수수료</span>,
+              300+ 종목, 7년 무사고 운영.{" "}
+              <span className="em-red">앱 설치 3분</span>이면 바로 시작.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3">
@@ -74,7 +75,7 @@ const HeroSection = () => {
               <span>2,000만+ 다운로드</span>
             </div>
             <p className="text-xs text-gray-400 mt-2 text-center lg:text-left">
-              iOS는 TestFlight를 통해 설치됩니다
+              iOS는 TestFlight 베타로 제공 · <span className="text-gray-500 font-semibold">선착순 1만 명 한정</span>
             </p>
           </div>
 

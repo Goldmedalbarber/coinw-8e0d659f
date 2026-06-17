@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import LivePriceTicker from "@/components/LivePriceTicker";
 import HeroSection from "@/components/HeroSection";
+import StickyCTA from "@/components/StickyCTA";
 import StatsSection from "@/components/StatsSection";
 import WhyCoinWSection from "@/components/WhyCoinWSection";
 import CTASection from "@/components/CTASection";
@@ -20,6 +21,8 @@ const Index = () => {
         <TrustBar />
       </main>
       <Footer />
+      <div className="h-20" aria-hidden />
+      <StickyCTA />
     </div>
   );
 };
