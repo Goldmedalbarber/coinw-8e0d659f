@@ -1,6 +1,12 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const badges = ["AUSTRAC", "VARA", "La Liga", "Modrić", "2,000만+"];
+const badges = [
+  { icon: "🔒", label: "AUSTRAC" },
+  { icon: "🏛️", label: "VARA" },
+  { icon: "⚽", label: "La Liga" },
+  { icon: "🏆", label: "Modric" },
+  { icon: "👤", label: "2,000만+" },
+];
 
 const TrustBar = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -15,9 +21,10 @@ const TrustBar = () => {
           {badges.map((b, i) => (
             <span
               key={i}
-              className="inline-flex px-4 py-2 rounded-full bg-[#F7F7F8] border border-[#EBEBEE] text-xs sm:text-sm font-medium text-gray-600"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#F7F7F8] border border-[#EBEBEE] text-xs sm:text-sm font-medium text-gray-600"
             >
-              {b}
+              <span>{b.icon}</span>
+              {b.label}
             </span>
           ))}
         </div>

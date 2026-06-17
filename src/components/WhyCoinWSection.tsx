@@ -33,10 +33,11 @@ const WhyCoinWSection = () => {
         className={`max-w-6xl mx-auto px-4 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
       >
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 relative inline-block">
             왜 글로벌 트레이더들이 CoinW를 선택할까요
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 rounded-full bg-gradient-to-r from-[#5227FF] to-[#8B5CF6]" />
           </h2>
-          <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto mt-6">
             Coingecko 파생상품 글로벌 TOP 4, Goldman Sachs · Morgan Stanley 출신 팀
           </p>
         </div>
@@ -45,11 +46,18 @@ const WhyCoinWSection = () => {
           {reasons.map((r, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-6 border border-[#EBEBEE] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="relative bg-white rounded-2xl p-6 border border-[#EBEBEE] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              style={{ transitionDelay: `${i * 0.1}s` }}
             >
-              <div className="text-3xl mb-4">{r.icon}</div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{r.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{r.desc}</p>
+              {/* Large watermark number */}
+              <span className="absolute top-3 right-4 text-6xl sm:text-7xl font-extrabold text-gray-900/[0.04] leading-none select-none pointer-events-none">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="relative">
+                <div className="text-3xl mb-4">{r.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{r.title}</h3>
+                <p className="text-sm text-gray-500 leading-relaxed">{r.desc}</p>
+              </div>
             </div>
           ))}
         </div>

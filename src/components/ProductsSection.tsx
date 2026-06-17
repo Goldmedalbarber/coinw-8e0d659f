@@ -50,9 +50,12 @@ const ProductsSection = () => {
           {products.map((p, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-6 border border-[#EBEBEE] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="group bg-white rounded-2xl p-6 border border-[#EBEBEE] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 hover:border-l-[3px] hover:border-l-[#5227FF]"
+              style={{ transitionDelay: `${i * 0.08}s` }}
             >
-              <div className="text-3xl mb-4">{p.icon}</div>
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#5227FF]/10 to-[#3B82F6]/10 flex items-center justify-center text-2xl mb-4 group-hover:from-[#5227FF]/20 group-hover:to-[#3B82F6]/20 transition-colors">
+                {p.icon}
+              </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">{p.title}</h3>
               <p className="text-sm text-gray-500 leading-relaxed">{p.desc}</p>
             </div>

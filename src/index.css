@@ -92,6 +92,130 @@
   }
 }
 
+/* ── Glass / glow / hover utilities ── */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(235, 235, 238, 0.8);
+}
+
+.glow-purple {
+  box-shadow: 0 0 80px rgba(82, 39, 255, 0.12);
+}
+
+.hover-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.hover-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Staggered transition delays ── */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ── Gradient mesh hero background ── */
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(82, 39, 255, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 70% at 50% 80%, rgba(59, 130, 246, 0.04) 0%, transparent 50%);
+  animation: meshShift 12s ease-in-out infinite alternate;
+}
+@keyframes meshShift {
+  0% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+  100% { background-position: 10% 10%, 90% 10%, 40% 90%; }
+}
+
+/* ── Float animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ── Shimmer animation for pill badge ── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-badge {
+  background: linear-gradient(
+    110deg,
+    rgba(82, 39, 255, 0.08) 30%,
+    rgba(82, 39, 255, 0.18) 50%,
+    rgba(82, 39, 255, 0.08) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ── Pulse dot ── */
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(82, 39, 255, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(82, 39, 255, 0); }
+}
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+/* ── Animated gradient CTA ── */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-gradient {
+  background: linear-gradient(135deg, #5227FF, #6D28D9, #4F46E5, #5227FF);
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* ── Glowing border ── */
+.glow-border {
+  box-shadow:
+    0 0 30px rgba(82, 39, 255, 0.25),
+    0 0 60px rgba(82, 39, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ── Subtle pulse for download buttons ── */
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+.btn-pulse:hover {
+  animation: subtlePulse 1.5s ease-in-out infinite;
+}
+
+/* ── Infinite scroll for partners ── */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.infinite-scroll {
+  animation: scrollLeft 30s linear infinite;
+}
+.infinite-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* ── Sparkle float ── */
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;

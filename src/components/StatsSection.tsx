@@ -18,7 +18,11 @@ const StatsSection = () => {
       >
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {stats.map((s, i) => (
-            <div key={i} className="text-center">
+            <div
+              key={i}
+              className={`glass-card rounded-2xl p-6 sm:p-8 text-center border-t-[3px] border-t-[#5227FF] hover:glow-purple hover-card delay-${i + 1}`}
+              style={{ transitionDelay: `${i * 0.1}s` }}
+            >
               <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gradient-purple mb-2">
                 {s.value}
               </div>

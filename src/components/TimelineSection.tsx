@@ -23,17 +23,20 @@ const TimelineSection = () => {
         </h2>
 
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-px bg-[#EBEBEE]" />
+          {/* Vertical gradient line */}
+          <div className="absolute left-5 sm:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#5227FF]/50 via-[#5227FF]/30 to-transparent" />
 
           <div className="space-y-8">
             {events.map((e, i) => (
               <div key={i} className="flex gap-5 relative">
+                {/* Pulsing dot at junction */}
+                <div className="absolute left-[14px] sm:left-[18px] top-[14px] sm:top-[18px] w-3 h-3 rounded-full bg-[#5227FF]/30 pulse-dot z-20" />
+
                 <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#5227FF] text-white flex items-center justify-center text-xs sm:text-sm font-bold z-10">
                   {e.year.slice(2)}
                 </div>
-                <div className="pt-1.5 sm:pt-2.5">
-                  <span className="text-sm font-bold text-[#5227FF] mr-2">{e.year}</span>
+                <div className="pt-1.5 sm:pt-2">
+                  <span className="text-base sm:text-lg font-extrabold text-[#5227FF] mr-2">{e.year}</span>
                   <span className="text-sm text-gray-600">{e.text}</span>
                 </div>
               </div>

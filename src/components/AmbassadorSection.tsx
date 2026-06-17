@@ -6,42 +6,50 @@ const images = [
   "https://cdn.yumltd.com/5e06b0332967b2c1083954e94188b23d6e7041c98cc0a49c396f867316b289c2.png?x-oss-process=image/format,webp",
 ];
 
-const badges = ["Ballon d'Or", "6× UCL", "Croatia Captain", "Real Madrid"];
+const tilts = [-3, 0, 3];
+
+const badges = ["Ballon d'Or", "6x UCL", "Croatia Captain", "Real Madrid"];
 
 const AmbassadorSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-20 sm:py-32 relative overflow-hidden">
+      {/* Radial purple glow background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-[#5227FF]/[0.05] blur-[160px]" />
+      </div>
+
       <div
         ref={ref}
-        className={`max-w-6xl mx-auto px-4 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
+        className={`relative max-w-6xl mx-auto px-4 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        {/* Horizontal scroll images */}
-        <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
+        {/* Fanned card images */}
+        <div className="flex gap-4 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide justify-center">
           {images.map((src, i) => (
             <img
               key={i}
               src={src}
-              alt={`Modrić ${i + 1}`}
-              className="snap-center flex-shrink-0 w-[75vw] sm:w-[320px] h-auto rounded-2xl object-cover"
+              alt={`Modric ${i + 1}`}
+              className="snap-center flex-shrink-0 w-[75vw] sm:w-[320px] h-auto rounded-2xl object-cover transition-transform duration-500 hover:rotate-0 hover:scale-105 shadow-lg"
+              style={{ transform: `rotate(${tilts[i]}deg)` }}
               loading="lazy"
             />
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+        <div className="mt-10 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
             글로벌 앰배서더 — 루카 모드리치
           </h2>
-          <p className="text-sm sm:text-base text-gray-500 mb-6">
+          <p className="text-base sm:text-lg text-gray-500 mb-8 max-w-lg mx-auto">
             발롱도르 수상자, 6회 챔피언스리그 우승, 크로아티아 캡틴.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             {badges.map((b, i) => (
               <span
                 key={i}
-                className="inline-flex px-3 py-1.5 rounded-full bg-[rgba(82,39,255,0.08)] text-[#5227FF] text-xs font-semibold"
+                className="inline-flex px-4 py-2 rounded-full bg-[rgba(82,39,255,0.08)] text-[#5227FF] text-sm font-semibold"
               >
                 {b}
               </span>
