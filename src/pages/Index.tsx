@@ -1,21 +1,41 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ServicesSection from "@/components/ServicesSection";
-import ProjectsSection from "@/components/ProjectsSection";
+import ModricBanner from "@/components/ModricBanner";
+import VideoSection from "@/components/VideoSection";
+import StatsSection from "@/components/StatsSection";
+import ProductsSection from "@/components/ProductsSection";
+import SecuritySection from "@/components/SecuritySection";
+import WhyCoinWSection from "@/components/WhyCoinWSection";
+import TradingGuideSection from "@/components/TradingGuideSection";
+import AcademySection from "@/components/AcademySection";
+import AmbassadorSection from "@/components/AmbassadorSection";
+import TeamSection from "@/components/TeamSection";
+import TimelineSection from "@/components/TimelineSection";
 import PartnersSection from "@/components/PartnersSection";
-import ContactSection from "@/components/ContactSection";
+import CTASection from "@/components/CTASection";
+import TrustBar from "@/components/TrustBar";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navbar />
       <main>
         <HeroSection />
-        <ServicesSection />
-        <ProjectsSection />
+        <ModricBanner />
+        <VideoSection />
+        <StatsSection />
+        <ProductsSection />
+        <SecuritySection />
+        <WhyCoinWSection />
+        <TradingGuideSection />
+        <AcademySection />
+        <AmbassadorSection />
+        <TeamSection />
+        <TimelineSection />
         <PartnersSection />
-        <ContactSection />
+        <CTASection />
+        <TrustBar />
       </main>
       <Footer />
     </div>

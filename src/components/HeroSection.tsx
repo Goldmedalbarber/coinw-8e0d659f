@@ -1,86 +1,52 @@
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const HeroSection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
+    <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 overflow-hidden">
+      {/* Radial glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#5227FF]/[0.06] blur-[120px]" />
       </div>
 
-      {/* Grid Pattern Overlay */}
-      <div 
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground) / 0.1) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-      />
+      <div
+        ref={ref}
+        className={`relative max-w-6xl mx-auto px-4 sm:px-6 text-center fade-in-section ${isVisible ? "visible" : ""}`}
+      >
+        {/* Pill badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgba(82,39,255,0.08)] text-[#5227FF] text-sm font-medium mb-6">
+          La Liga 공식 파트너 · 글로벌 2,000만+ 유저
+        </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
-          {/* Badge */}
-          <div className="animate-fade-up mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-sm font-inter text-foreground/90">
-                Korea's Premier Web3 Marketing Agency
-              </span>
-            </div>
-          </div>
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-6">
+          Here for{" "}
+          <span className="text-gradient-purple">Crypto</span>
+        </h1>
 
-          {/* Main Heading */}
-          <h1 className="animate-fade-up-delay-1 font-orbitron text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-6">
-            <span className="block text-foreground">WEB3, NFT, DEFI</span>
-            <span className="block text-foreground">크립토 마케팅</span>
-            <span className="block text-gradient">전문 에이전시</span>
-          </h1>
+        <p className="max-w-xl mx-auto text-base sm:text-lg text-gray-500 mb-10 leading-relaxed">
+          300+ 크립토 종목, 업계 최저 수수료, 24/7 거래.
+          <br className="hidden sm:block" />
+          발롱도르 수상자 루카 모드리치가 함께합니다.
+        </p>
 
-          {/* Subtitle */}
-          <p className="animate-fade-up-delay-2 text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 font-inter">
-            블록체인, DeFi, NFT, IEO/ICO 프로젝트를 위한 종합 마케팅 솔루션.
-            <br className="hidden md:block" />
-            150개 이상의 성공적인 프로젝트 경험으로 증명된 전문성.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row gap-4">
-            <Button variant="hero" size="lg" className="group">
-              무료 상담 신청
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="heroOutline" size="lg">
-              프로젝트 보기
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="animate-fade-up-delay-3 mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
-            {[
-              { value: "150+", label: "프로젝트" },
-              { value: "$2B+", label: "모금 지원" },
-              { value: "50+", label: "글로벌 파트너" },
-              { value: "24/7", label: "전담 지원" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="font-orbitron text-3xl md:text-4xl font-bold text-foreground text-glow">
-                  {stat.value}
-                </div>
-                <div className="font-inter text-sm text-muted-foreground mt-1">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href="https://testflight.apple.com/join/EnVxDqYN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-7 py-3.5 bg-[#5227FF] text-white font-semibold rounded-2xl hover:bg-[#4520DD] transition-colors text-base"
+          >
+            지금 시작하기 →
+          </a>
+          <a
+            href="#trading-guide"
+            className="inline-flex items-center px-7 py-3.5 border-2 border-[#EBEBEE] text-gray-700 font-semibold rounded-2xl hover:border-[#5227FF] hover:text-[#5227FF] transition-colors text-base"
+          >
+            트레이딩 가이드
+          </a>
         </div>
       </div>
-
-      {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };

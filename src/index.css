@@ -1,87 +1,49 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @layer base {
   :root {
-    --background: 230 100% 8%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
 
-    --card: 230 80% 12%;
-    --card-foreground: 0 0% 100%;
+    --card: 240 5% 97%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: 230 80% 12%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 230 100% 60%;
+    --primary: 255 76% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 100% 65%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 5% 97%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 230 50% 20%;
-    --muted-foreground: 230 20% 70%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 180 100% 50%;
-    --accent-foreground: 230 100% 8%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 230 50% 25%;
-    --input: 230 50% 20%;
-    --ring: 230 100% 60%;
+    --border: 240 6% 92%;
+    --input: 240 6% 92%;
+    --ring: 255 76% 58%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(230, 100%, 50%) 0%, hsl(260, 100%, 45%) 50%, hsl(280, 100%, 40%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(230, 80%, 15%) 0%, hsl(230, 80%, 10%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(230, 100%, 60%) 0%, hsl(260, 100%, 65%) 100%);
-    --shadow-glow: 0 0 60px hsl(230 100% 60% / 0.3);
-    --shadow-glow-strong: 0 0 100px hsl(230 100% 60% / 0.5);
-    --text-glow: 0 0 40px hsl(230 100% 60% / 0.5);
-
-    --sidebar-background: 230 100% 8%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 230 100% 60%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 255 76% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 230 50% 20%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 230 50% 25%;
-    --sidebar-ring: 230 100% 60%;
-  }
-
-  .dark {
-    --background: 230 100% 8%;
-    --foreground: 0 0% 100%;
-    --card: 230 80% 12%;
-    --card-foreground: 0 0% 100%;
-    --popover: 230 80% 12%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 230 100% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 260 100% 65%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 230 50% 20%;
-    --muted-foreground: 230 20% 70%;
-    --accent: 180 100% 50%;
-    --accent-foreground: 230 100% 8%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 230 50% 25%;
-    --input: 230 50% 20%;
-    --ring: 230 100% 60%;
-    --sidebar-background: 230 100% 8%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 230 100% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 230 50% 20%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 230 50% 25%;
-    --sidebar-ring: 230 100% 60%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 240 6% 92%;
+    --sidebar-ring: 255 76% 58%;
   }
 }
 
@@ -95,108 +57,38 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    @apply bg-white text-foreground antialiased;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   }
 }
 
 @layer components {
-  .gradient-hero {
-    background: var(--gradient-hero);
-  }
-
-  .gradient-card {
-    background: var(--gradient-card);
-  }
-
-  .text-gradient {
-    background: var(--gradient-glow);
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #5227FF 0%, #8B5CF6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .glow {
-    box-shadow: var(--shadow-glow);
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .glow-strong {
-    box-shadow: var(--shadow-glow-strong);
-  }
-
-  .text-glow {
-    text-shadow: var(--text-glow);
-  }
-
-  .glass {
-    @apply bg-card/40 backdrop-blur-xl border border-border/50;
-  }
-
-  .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  .fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-
-  .animate-pulse-slow {
-    animation: pulse-slow 4s ease-in-out infinite;
-  }
-
-  .animate-gradient {
-    animation: gradient-shift 8s ease infinite;
-    background-size: 200% 200%;
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.8s ease-out forwards;
-  }
-
-  .animate-fade-up-delay-1 {
-    animation: fade-up 0.8s ease-out 0.1s forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-up-delay-2 {
-    animation: fade-up 0.8s ease-out 0.2s forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-up-delay-3 {
-    animation: fade-up 0.8s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 
