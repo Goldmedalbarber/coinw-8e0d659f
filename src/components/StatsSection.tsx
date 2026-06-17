@@ -15,7 +15,7 @@ const CountUp = ({ end, run }: { end: number; run: boolean }) => {
     if (!run) return;
     let raf = 0;
     const start = performance.now();
-    const dur = 1400;
+    const dur = 1500;
     const tick = (t: number) => {
       const p = Math.min((t - start) / dur, 1);
       const eased = 1 - Math.pow(1 - p, 3);
@@ -33,20 +33,25 @@ const StatsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="relative py-12 sm:py-16">
+    <section className="relative py-16 sm:py-24">
       <div
         ref={ref}
-        className={`max-w-4xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
+        className={`max-w-6xl mx-auto px-5 sm:px-8 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-3xl overflow-hidden bg-white/[0.06] border border-white/[0.08]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
           {stats.map((s, i) => (
-            <div key={i} className="text-center px-3 py-7 sm:py-8 bg-[#0B0B14]">
-              <div className="text-2xl sm:text-4xl font-black text-gradient-purple tabular-nums">
+            <div
+              key={i}
+              className={`text-center lg:text-left ${i > 0 ? "lg:border-l lg:border-white/10 lg:pl-6" : ""}`}
+            >
+              <div className="font-display text-gradient-purple text-[clamp(2.8rem,7vw,4.5rem)] leading-none tabular-nums">
                 {s.prefix}
                 <CountUp end={s.value} run={isVisible} />
                 {s.suffix}
               </div>
-              <div className="text-xs sm:text-sm text-white/40 mt-1.5">{s.label}</div>
+              <div className="text-xs sm:text-sm font-semibold tracking-[0.15em] uppercase text-white/40 mt-3">
+                {s.label}
+              </div>
             </div>
           ))}
         </div>

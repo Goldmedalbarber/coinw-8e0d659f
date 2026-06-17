@@ -14,7 +14,7 @@ const AndroidIcon = ({ className = "" }: { className?: string }) => (
 );
 
 const HeroSection = () => {
-  const { ref, isVisible } = useScrollAnimation(0.1);
+  const { ref, isVisible } = useScrollAnimation(0.05);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
 
@@ -37,92 +37,82 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 overflow-hidden gradient-mesh">
+    <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          src="/modric-coinw.mp4"
+          poster="/modric-coinw-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+        <div className="absolute inset-0 scrim-hero" />
+      </div>
+
       <div
         ref={ref}
-        className={`relative max-w-5xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
+        className={`relative z-10 flex-1 flex flex-col justify-end w-full max-w-6xl mx-auto px-5 sm:px-8 pt-28 pb-14 sm:pb-20 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-14">
-          <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shimmer-badge text-white text-xs sm:text-sm font-semibold mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5D73] pulse-dot" />
-              🔥 전 세계 2,000만 명이 쓰는 글로벌 거래소
-            </div>
+        <div className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full shimmer-badge text-white text-[11px] sm:text-xs font-bold tracking-wider mb-5 uppercase">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF5D73] pulse-dot" />
+          Luka Modrić · Global Ambassador
+        </div>
 
-            <h1 className="text-[34px] sm:text-5xl lg:text-[58px] font-black tracking-tight text-white leading-[1.1] mb-6">
-              루카 모드리치도<br />
-              쓰는 <span className="marker"><span className="text-gradient-purple">크립토 거래소</span></span>
-            </h1>
+        <h1 className="font-display-ko text-white text-[clamp(2.6rem,9vw,6rem)] leading-[0.95] mb-5">
+          모드리치가 선택한<br />
+          <span className="text-gradient-purple">크립토 거래소</span>
+        </h1>
 
-            <p className="text-base sm:text-lg text-white/55 leading-relaxed mb-9 max-w-md mx-auto lg:mx-0">
-              업계 <span className="marker-amber">최저 수수료</span>, 300+ 종목, 7년 무사고 운영.{" "}
-              <span className="em-red">앱 설치 3분</span>이면 바로 시작.
-            </p>
+        <p className="text-base sm:text-xl text-white/65 leading-relaxed max-w-xl mb-9">
+          전 세계 2,000만 명이 쓰는 글로벌 거래소.
+          업계 <span className="marker-amber">최저 수수료</span>, <span className="em-red">앱 설치 3분</span>이면 바로 시작.
+        </p>
 
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3">
-              <a
-                href="https://testflight.apple.com/join/EnVxDqYN"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 btn-primary text-white font-bold rounded-2xl text-base"
-              >
-                <AppleIcon className="w-5 h-5" />
-                iOS 다운로드
-              </a>
-              <a
-                href="#"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 border border-white/15 bg-white/[0.03] text-white/90 font-semibold rounded-2xl hover:bg-white/[0.08] hover:border-white/30 transition-all text-base"
-              >
-                <AndroidIcon className="w-5 h-5" />
-                Android 다운로드
-              </a>
-            </div>
-            <div className="flex items-center justify-center lg:justify-start gap-2 mt-5 text-xs text-white/50">
-              <span className="text-amber-400 tracking-tight">★★★★★</span>
-              <span className="font-semibold text-white/80">4.8</span>
-              <span className="text-white/25">·</span>
-              <span>2,000만+ 다운로드</span>
-            </div>
-            <p className="text-xs text-white/35 mt-2 text-center lg:text-left">
-              iOS는 TestFlight 베타로 제공 · <span className="text-white/55 font-semibold">선착순 1만 명 한정</span>
-            </p>
-          </div>
-
-          <div className="w-full lg:w-[490px] flex-shrink-0">
-            <div className="relative">
-              <div className="relative aspect-video rounded-3xl overflow-hidden glow-purple bg-black">
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover"
-                  src="/modric-coinw.mp4"
-                  poster="/modric-coinw-poster.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                />
-                <span className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
-                <button
-                  onClick={toggleMute}
-                  aria-label={muted ? "소리 켜기" : "소리 끄기"}
-                  className="absolute bottom-3 right-3 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm text-white border border-white/15 hover:bg-black/70 transition-colors"
-                >
-                  {muted ? (
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zM19 12c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4 9.91 6.09 12 8.18V4z" />
-                    </svg>
-                  ) : (
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-                    </svg>
-                  )}
-                </button>
-              </div>
-            </div>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <a
+            href="https://testflight.apple.com/join/EnVxDqYN"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2.5 px-9 py-4 btn-primary text-white font-bold rounded-2xl text-base"
+          >
+            <AppleIcon className="w-5 h-5" />
+            iOS 다운로드
+          </a>
+          <a
+            href="#"
+            className="inline-flex items-center justify-center gap-2.5 px-9 py-4 border border-white/20 bg-white/[0.04] backdrop-blur-sm text-white font-semibold rounded-2xl hover:bg-white/10 hover:border-white/40 transition-all text-base"
+          >
+            <AndroidIcon className="w-5 h-5" />
+            Android 다운로드
+          </a>
+          <div className="flex items-center gap-2 sm:ml-3 text-xs text-white/55 mt-1 sm:mt-0">
+            <span className="text-amber-400">★★★★★</span>
+            <span className="font-bold text-white/80">4.8</span>
+            <span className="text-white/30">·</span>
+            <span>선착순 1만 명</span>
           </div>
         </div>
       </div>
+
+      <button
+        onClick={toggleMute}
+        aria-label={muted ? "소리 켜기" : "소리 끄기"}
+        className="absolute z-10 bottom-5 right-5 flex items-center justify-center w-11 h-11 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/15 hover:bg-black/60 transition-colors"
+      >
+        {muted ? (
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zM19 12c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.8 8.8 0 0 0 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06a8.99 8.99 0 0 0 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4 9.91 6.09 12 8.18V4z" />
+          </svg>
+        ) : (
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+          </svg>
+        )}
+      </button>
     </section>
   );
 };

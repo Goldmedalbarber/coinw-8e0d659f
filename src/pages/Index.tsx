@@ -1,22 +1,26 @@
 import Navbar from "@/components/Navbar";
-import LivePriceTicker from "@/components/LivePriceTicker";
 import HeroSection from "@/components/HeroSection";
-import StickyCTA from "@/components/StickyCTA";
+import LivePriceTicker from "@/components/LivePriceTicker";
 import StatsSection from "@/components/StatsSection";
 import WhyCoinWSection from "@/components/WhyCoinWSection";
+import KineticMarquee from "@/components/KineticMarquee";
+import ModricMoment from "@/components/ModricMoment";
 import CTASection from "@/components/CTASection";
 import TrustBar from "@/components/TrustBar";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-[#07070C]">
       <Navbar />
-      <LivePriceTicker />
       <main>
         <HeroSection />
+        <LivePriceTicker />
         <StatsSection />
         <WhyCoinWSection />
+        <KineticMarquee />
+        <ModricMoment />
         <CTASection />
         <TrustBar />
       </main>

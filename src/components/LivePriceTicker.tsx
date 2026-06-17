@@ -47,7 +47,7 @@ const LivePriceTicker = () => {
   const loop = [...coins, ...coins];
 
   return (
-    <div className="mt-16 border-b border-white/[0.07] bg-white/[0.02] backdrop-blur-sm overflow-hidden">
+    <div className="border-y border-white/[0.07] bg-white/[0.02] backdrop-blur-sm overflow-hidden">
       <div className="flex w-max infinite-scroll py-2.5">
         {loop.map((c, i) => {
           const up = c.change >= 0;
