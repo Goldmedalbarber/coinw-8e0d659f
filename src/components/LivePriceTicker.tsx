@@ -47,22 +47,22 @@ const LivePriceTicker = () => {
   const loop = [...coins, ...coins];
 
   return (
-    <div className="mt-16 border-b border-[#EBEBEE] bg-white/70 backdrop-blur-sm overflow-hidden">
+    <div className="mt-16 border-b border-white/[0.07] bg-white/[0.02] backdrop-blur-sm overflow-hidden">
       <div className="flex w-max infinite-scroll py-2.5">
         {loop.map((c, i) => {
           const up = c.change >= 0;
           return (
             <div
               key={i}
-              className="flex items-center gap-2 px-5 whitespace-nowrap text-[13px] sm:text-sm border-r border-[#F0F0F2]"
+              className="flex items-center gap-2 px-5 whitespace-nowrap text-[13px] sm:text-sm border-r border-white/[0.06]"
             >
-              <span className="font-extrabold text-gray-900">{c.symbol}</span>
-              <span className="font-medium text-gray-500 tabular-nums">
+              <span className="font-bold text-white">{c.symbol}</span>
+              <span className="font-medium text-white/45 tabular-nums">
                 ${fmtPrice(c.price)}
               </span>
               <span
                 className={`font-semibold tabular-nums ${
-                  up ? "text-emerald-500" : "text-rose-500"
+                  up ? "text-emerald-400" : "text-rose-400"
                 }`}
               >
                 {up ? "▲" : "▼"} {Math.abs(c.change).toFixed(2)}%

@@ -25,14 +25,17 @@ const WhyCoinWSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-14 sm:py-20">
+    <section className="relative py-16 sm:py-24 overflow-hidden">
+      <div className="absolute inset-0 spotlight pointer-events-none" />
       <div
         ref={ref}
-        className={`max-w-3xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
+        className={`relative max-w-3xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        <div className="text-center mb-9 sm:mb-12">
-          <p className="text-sm font-bold text-[#5227FF] mb-2">WHY COINW</p>
-          <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-gray-900 leading-snug">
+        <div className="text-center mb-10 sm:mb-14">
+          <p className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#A78BFA] mb-3">
+            WHY COINW
+          </p>
+          <h2 className="text-[26px] sm:text-4xl font-black tracking-tight text-white leading-snug">
             한 번 써보면 못 갈아타는<br className="sm:hidden" />{" "}
             <span className="marker">3가지 이유</span>
           </h2>
@@ -42,20 +45,21 @@ const WhyCoinWSection = () => {
           {reasons.map((r) => (
             <div
               key={r.no}
-              className="flex items-start gap-4 sm:gap-6 p-5 sm:p-7 bg-white rounded-3xl border border-[#EBEBEE] hover-card"
+              className="flex items-start gap-4 sm:gap-7 p-6 sm:p-8 glass-card rounded-3xl hover-card"
             >
-              <span className="text-3xl sm:text-5xl font-black text-gradient-purple leading-none shrink-0">
+              <span className="text-4xl sm:text-6xl font-black text-gradient-purple leading-none shrink-0 tabular-nums">
                 {r.no}
               </span>
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg sm:text-2xl font-extrabold text-gray-900 mb-1">
+                <h3 className="text-lg sm:text-2xl font-extrabold text-white mb-1.5">
                   {r.title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-500 leading-relaxed mb-2">
+                <p className="text-sm sm:text-base text-white/50 leading-relaxed mb-3">
                   {r.desc}
                 </p>
-                <span className="inline-block text-xs sm:text-sm font-bold text-[#5227FF] bg-[#5227FF]/[0.07] px-3 py-1 rounded-full">
-                  ✓ {r.highlight}
+                <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#A78BFA] bg-[#7C5CFF]/[0.12] border border-[#7C5CFF]/20 px-3 py-1.5 rounded-full">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                  {r.highlight}
                 </span>
               </div>
             </div>

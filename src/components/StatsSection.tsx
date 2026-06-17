@@ -33,20 +33,20 @@ const StatsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-10 sm:py-14">
+    <section className="relative py-12 sm:py-16">
       <div
         ref={ref}
         className={`max-w-4xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px rounded-3xl overflow-hidden bg-white/[0.06] border border-white/[0.08]">
           {stats.map((s, i) => (
-            <div key={i} className="text-center">
-              <div className="text-xl sm:text-3xl font-extrabold text-gradient-purple tabular-nums">
+            <div key={i} className="text-center px-3 py-7 sm:py-8 bg-[#0B0B14]">
+              <div className="text-2xl sm:text-4xl font-black text-gradient-purple tabular-nums">
                 {s.prefix}
                 <CountUp end={s.value} run={isVisible} />
                 {s.suffix}
               </div>
-              <div className="text-xs sm:text-sm text-gray-400 mt-1">{s.label}</div>
+              <div className="text-xs sm:text-sm text-white/40 mt-1.5">{s.label}</div>
             </div>
           ))}
         </div>

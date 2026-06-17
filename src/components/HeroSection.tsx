@@ -1,6 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+const AppleIcon = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.98-.84.94-2.2 1.66-3.34 1.57-.14-1.12.43-2.3 1.1-3.04.78-.86 2.2-1.5 3.36-1.51zM20.5 17.2c-.6 1.38-.89 1.99-1.66 3.21-1.08 1.7-2.6 3.82-4.49 3.83-1.67.02-2.1-1.09-4.37-1.08-2.27.01-2.74 1.1-4.41 1.08-1.88-.02-3.32-1.93-4.4-3.63-3.02-4.77-3.34-10.36-1.47-13.33C.93 5.6 2.96 4.4 4.87 4.4c1.94 0 3.16 1.07 4.76 1.07 1.55 0 2.5-1.07 4.74-1.07 1.7 0 3.5.93 4.78 2.53-4.2 2.3-3.52 8.3.55 10.27z" />
+  </svg>
+);
+
+const AndroidIcon = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M17.6 9.48l1.84-3.18a.4.4 0 0 0-.69-.4l-1.86 3.23a11.46 11.46 0 0 0-9.78 0L5.25 5.9a.4.4 0 0 0-.69.4L6.4 9.48A10.81 10.81 0 0 0 1 18h22a10.81 10.81 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z" />
+  </svg>
+);
+
 const HeroSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -25,30 +37,25 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative pt-10 pb-14 sm:pt-16 sm:pb-20 overflow-hidden gradient-mesh">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#5227FF]/[0.05] blur-[100px]" />
-      </div>
-
+    <section className="relative pt-12 pb-16 sm:pt-20 sm:pb-24 overflow-hidden gradient-mesh">
       <div
         ref={ref}
         className={`relative max-w-5xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
       >
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-14">
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shimmer-badge text-[#5227FF] text-xs sm:text-sm font-bold mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F0364D] pulse-dot" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shimmer-badge text-white text-xs sm:text-sm font-semibold mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF5D73] pulse-dot" />
               🔥 전 세계 2,000만 명이 쓰는 글로벌 거래소
             </div>
 
-            <h1 className="text-[32px] sm:text-5xl lg:text-[56px] font-black tracking-tight text-gray-900 leading-[1.12] mb-5">
+            <h1 className="text-[34px] sm:text-5xl lg:text-[58px] font-black tracking-tight text-white leading-[1.1] mb-6">
               루카 모드리치도<br />
               쓰는 <span className="marker"><span className="text-gradient-purple">크립토 거래소</span></span>
             </h1>
 
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-              업계 <span className="marker-amber font-semibold text-gray-800">최저 수수료</span>,
-              300+ 종목, 7년 무사고 운영.{" "}
+            <p className="text-base sm:text-lg text-white/55 leading-relaxed mb-9 max-w-md mx-auto lg:mx-0">
+              업계 <span className="marker-amber">최저 수수료</span>, 300+ 종목, 7년 무사고 운영.{" "}
               <span className="em-red">앱 설치 3분</span>이면 바로 시작.
             </p>
 
@@ -57,32 +64,33 @@ const HeroSection = () => {
                 href="https://testflight.apple.com/join/EnVxDqYN"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#5227FF] text-white font-bold rounded-2xl hover:bg-[#4520DD] transition-all btn-pulse text-base"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 btn-primary text-white font-bold rounded-2xl text-base"
               >
-                📱 iOS 다운로드
+                <AppleIcon className="w-5 h-5" />
+                iOS 다운로드
               </a>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#EBEBEE] text-gray-600 font-semibold rounded-2xl hover:border-[#5227FF] hover:text-[#5227FF] transition-all text-base"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 border border-white/15 bg-white/[0.03] text-white/90 font-semibold rounded-2xl hover:bg-white/[0.08] hover:border-white/30 transition-all text-base"
               >
-                🤖 Android 다운로드
+                <AndroidIcon className="w-5 h-5" />
+                Android 다운로드
               </a>
             </div>
-            <div className="flex items-center justify-center lg:justify-start gap-2 mt-4 text-xs text-gray-500">
+            <div className="flex items-center justify-center lg:justify-start gap-2 mt-5 text-xs text-white/50">
               <span className="text-amber-400 tracking-tight">★★★★★</span>
-              <span className="font-semibold text-gray-700">4.8</span>
-              <span className="text-gray-300">·</span>
+              <span className="font-semibold text-white/80">4.8</span>
+              <span className="text-white/25">·</span>
               <span>2,000만+ 다운로드</span>
             </div>
-            <p className="text-xs text-gray-400 mt-2 text-center lg:text-left">
-              iOS는 TestFlight 베타로 제공 · <span className="text-gray-500 font-semibold">선착순 1만 명 한정</span>
+            <p className="text-xs text-white/35 mt-2 text-center lg:text-left">
+              iOS는 TestFlight 베타로 제공 · <span className="text-white/55 font-semibold">선착순 1만 명 한정</span>
             </p>
           </div>
 
-          <div className="w-full lg:w-[480px] flex-shrink-0">
+          <div className="w-full lg:w-[490px] flex-shrink-0">
             <div className="relative">
-              <div className="absolute -inset-3 rounded-3xl bg-[#5227FF]/[0.06] blur-2xl" />
-              <div className="relative aspect-video rounded-2xl overflow-hidden glow-purple bg-black">
+              <div className="relative aspect-video rounded-3xl overflow-hidden glow-purple bg-black">
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
@@ -94,10 +102,11 @@ const HeroSection = () => {
                   playsInline
                   preload="metadata"
                 />
+                <span className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
                 <button
                   onClick={toggleMute}
                   aria-label={muted ? "소리 켜기" : "소리 끄기"}
-                  className="absolute bottom-3 right-3 flex items-center justify-center w-10 h-10 rounded-full bg-black/45 backdrop-blur-sm text-white hover:bg-black/65 transition-colors"
+                  className="absolute bottom-3 right-3 flex items-center justify-center w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm text-white border border-white/15 hover:bg-black/70 transition-colors"
                 >
                   {muted ? (
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
