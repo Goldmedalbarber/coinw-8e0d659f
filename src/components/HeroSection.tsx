@@ -1,68 +1,86 @@
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
-  const { ref, isVisible } = useScrollAnimation(0.1);
-
   return (
-    <section className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 overflow-hidden gradient-mesh">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#5227FF]/[0.05] blur-[100px]" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
       </div>
 
-      <div
-        ref={ref}
-        className={`relative max-w-5xl mx-auto px-5 sm:px-6 fade-in-section ${isVisible ? "visible" : ""}`}
-      >
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
-          <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full shimmer-badge text-[#5227FF] text-xs sm:text-sm font-semibold mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#5227FF]" />
-              La Liga 공식 파트너 · 2,000만+ 유저
+      {/* Grid Pattern Overlay */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground) / 0.1) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+          {/* Badge */}
+          <div className="animate-fade-up mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
+              <Sparkles className="w-4 h-4 text-accent" />
+              <span className="text-sm font-inter text-foreground/90">
+                Korea's Premier Web3 Marketing Agency
+              </span>
             </div>
-
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black tracking-tight text-gray-900 leading-[1.15] mb-5">
-              글로벌이 검증한<br />
-              <span className="text-gradient-purple">크립토 거래소</span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-gray-500 leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
-              300+ 종목, 업계 최저 수수료, 7년 무사고 운영.
-              지금 앱을 다운로드하고 시작하세요.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3">
-              <a
-                href="https://testflight.apple.com/join/EnVxDqYN"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#5227FF] text-white font-bold rounded-2xl hover:bg-[#4520DD] transition-all btn-pulse text-base"
-              >
-                📱 iOS 다운로드
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#EBEBEE] text-gray-600 font-semibold rounded-2xl hover:border-[#5227FF] hover:text-[#5227FF] transition-all text-base"
-              >
-                🤖 Android 다운로드
-              </a>
-            </div>
-            <p className="text-xs text-gray-400 mt-3 text-center lg:text-left">
-              iOS는 TestFlight를 통해 설치됩니다
-            </p>
           </div>
 
-          <div className="hidden lg:block flex-shrink-0 w-[340px]">
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-3xl bg-[#5227FF]/[0.04] blur-2xl" />
-              <img
-                src="https://cdn.yumltd.com/6e10bbfd04c9902329676c30ce02b617d769745d772dc4a7deb6770c214f2986.png?x-oss-process=image/format,webp"
-                alt="CoinW x Luka Modrić"
-                className="relative w-full rounded-2xl"
-              />
-            </div>
+          {/* Main Heading */}
+          <h1 className="animate-fade-up-delay-1 font-orbitron text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-6">
+            <span className="block text-foreground">WEB3, NFT, DEFI</span>
+            <span className="block text-foreground">크립토 마케팅</span>
+            <span className="block text-gradient">전문 에이전시</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="animate-fade-up-delay-2 text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 font-inter">
+            블록체인, DeFi, NFT, IEO/ICO 프로젝트를 위한 종합 마케팅 솔루션.
+            <br className="hidden md:block" />
+            150개 이상의 성공적인 프로젝트 경험으로 증명된 전문성.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row gap-4">
+            <Button variant="hero" size="lg" className="group">
+              무료 상담 신청
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button variant="heroOutline" size="lg">
+              프로젝트 보기
+            </Button>
+          </div>
+
+          {/* Stats */}
+          <div className="animate-fade-up-delay-3 mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
+            {[
+              { value: "150+", label: "프로젝트" },
+              { value: "$2B+", label: "모금 지원" },
+              { value: "50+", label: "글로벌 파트너" },
+              { value: "24/7", label: "전담 지원" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="font-orbitron text-3xl md:text-4xl font-bold text-foreground text-glow">
+                  {stat.value}
+                </div>
+                <div className="font-inter text-sm text-muted-foreground mt-1">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+
+      {/* Bottom Gradient Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
 };
