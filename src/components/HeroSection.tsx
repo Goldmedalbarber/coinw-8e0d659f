@@ -108,24 +108,14 @@ const HeroSection = () => {
         </div>
 
         <div
-          className="reveal flex flex-wrap items-center gap-x-3 gap-y-1 mt-4 text-xs sm:text-sm text-white/55"
+          className="reveal flex flex-wrap items-center gap-x-4 gap-y-2 mt-7 pt-6 border-t border-white/10 text-xs sm:text-sm text-white/50"
           style={{ animationDelay: "0.62s" }}
         >
-          <span className="text-amber-400">★★★★★</span>
-          <span className="font-bold text-white/85">4.8</span>
-          <span className="text-white/25">·</span>
-          <span>무료 가입</span>
-          <span className="text-white/25">·</span>
-          <span>카드 등록 없이 설치 3분</span>
-          <span className="text-white/25">·</span>
-          <span className="text-white/75 font-medium">선착순 1만 명</span>
-        </div>
-
-        <div
-          className="reveal flex flex-wrap items-center gap-x-5 gap-y-2.5 mt-7 pt-6 border-t border-white/10 text-xs sm:text-sm text-white/45"
-          style={{ animationDelay: "0.7s" }}
-        >
-          {["La Liga 공식 파트너", "AUSTRAC · VARA 라이선스", "7년 무사고 운영"].map((t) => (
+          <span className="flex items-center gap-1.5">
+            <span className="text-amber-400">★</span>
+            <span className="font-bold text-white/85">4.8</span>
+          </span>
+          {["La Liga 공식 파트너", "AUSTRAC · VARA 라이선스", "7년 무사고"].map((t) => (
             <span key={t} className="flex items-center gap-1.5">
               <Shield className="w-4 h-4 text-[#A78BFA]" />
               {t}

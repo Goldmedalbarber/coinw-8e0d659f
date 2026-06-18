@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 const CoinWLogo = () => (
-  <svg width="100" viewBox="0 0 141 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="104" viewBox="0 0 141 38" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -15,58 +13,14 @@ const CoinWLogo = () => (
   </svg>
 );
 
-const AppleIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M16.365 1.43c0 1.14-.42 2.2-1.12 2.98-.84.94-2.2 1.66-3.34 1.57-.14-1.12.43-2.3 1.1-3.04.78-.86 2.2-1.5 3.36-1.51zM20.5 17.2c-.6 1.38-.89 1.99-1.66 3.21-1.08 1.7-2.6 3.82-4.49 3.83-1.67.02-2.1-1.09-4.37-1.08-2.27.01-2.74 1.1-4.41 1.08-1.88-.02-3.32-1.93-4.4-3.63-3.02-4.77-3.34-10.36-1.47-13.33C.93 5.6 2.96 4.4 4.87 4.4c1.94 0 3.16 1.07 4.76 1.07 1.55 0 2.5-1.07 4.74-1.07 1.7 0 3.5.93 4.78 2.53-4.2 2.3-3.52 8.3.55 10.27z" />
-  </svg>
+const Navbar = () => (
+  <nav className="absolute top-0 left-0 right-0 z-50">
+    <div className="max-w-6xl mx-auto px-5 sm:px-8 h-20 flex items-center">
+      <a href="#" aria-label="CoinW Home" className="flex items-center">
+        <CoinWLogo />
+      </a>
+    </div>
+  </nav>
 );
-
-const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <a href="#" aria-label="CoinW Home" className="flex items-center">
-          <CoinWLogo />
-        </a>
-
-        <a
-          href="https://testflight.apple.com/join/EnVxDqYN"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 btn-primary text-white text-sm font-bold rounded-xl"
-        >
-          <AppleIcon className="w-4 h-4" />
-          앱 다운로드
-        </a>
-
-        <button
-          className="sm:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="메뉴"
-        >
-          <span className={`block w-5 h-0.5 bg-white transition-transform ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-white transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-white transition-transform ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
-      </div>
-
-      {mobileOpen && (
-        <div className="sm:hidden glass-nav px-4 pb-4">
-          <a
-            href="https://testflight.apple.com/join/EnVxDqYN"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 w-full px-5 py-3 btn-primary text-white text-sm font-bold rounded-xl"
-          >
-            <AppleIcon className="w-4 h-4" />
-            앱 다운로드
-          </a>
-        </div>
-      )}
-    </nav>
-  );
-};
 
 export default Navbar;
